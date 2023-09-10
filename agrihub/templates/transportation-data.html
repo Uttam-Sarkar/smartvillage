@@ -1,21 +1,102 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container mt-5">
+    <style>
+        table, th, td {
+          border: 5px solid white;
+          border-collapse: collapse;
+        }
+        th, td {
+          background-color: #96D4D4;
+        }
+        </style>
+        <style>
+            th, td {
+                border: 1px solid #ccc; /* Add borders for clarity */
+               /* padding: 8px;  Add padding for spacing */
+                width: 100px; /* Set a fixed width for table columns */
+            }
+            /* Style the table */
+            table {
+
+                border-radius: 5px;
+                width: 100%;
+                border-collapse: collapse;
+                font-family: Arial, sans-serif;
+            }
+            
+            /* Style table header */
+            th {
+                background-color: #f2f2f2;
+                text-align: left;
+                padding: 10px;
+            }
+    
+            /* Style table rows */
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+    
+            tr:hover {
+                background-color: #ddd;
+            }
+    
+            /* Style table data cells */
+            td {
+                text-align: left;;
+                padding: 10px;
+                width: 20%;
+                border-right: 5px solid white;
+            }
+
+            
+    
+            /* Style the "Call" button */
+            .btn-primary {
+                text-decoration: none;
+                padding: 5px 10px;
+                background-color: #007bff;
+                color: #fff;
+                border-radius: 5px;
+                text-align:right;
+            }    
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    <div class="card-header bg-primary text-white" >Journey Information</div>
+    <table>
+        <thead>
+            <tr>
+                
+                <th>From</th>
+                <th>To</th>
+                <th>Details</th>
+                <th>Phone Number</th>
+                <th>Created Date</th>
+            </tr>
+        </thead>
+    </table>
     {% for i in data %}
     <div class="card">
-        <div class="card-header bg-primary text-white">Journey Information</div>
-        <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text">From: {{i.from_address}}</p>
-            <p class="card-text">To: {{i.to_address}} degree</p>
-            <p class="card-text">Details: {{i.object_details}}</p>
-            <p class="card-text">
-                Phone number: {{i.phone_number}}
-                <a href="tel:{{i.phone_number}}" class="btn btn-primary"
-                    >Call</a
-                >
-            </p>
-            <p class="card-text">Journey created: {{i.created_date}}</p>
-        </div>
+        
+        <table class="table-primary">
+            
+            <tbody>
+                <!-- Example row with dynamic data -->
+                <tr >
+                                     
+                    <td> <p class="card-text">{{i.from_address}}</p></td>
+                    <td><p class="card-text">{{i.to_address}} degree</p></td>
+                    <td> <p class="card-text">{{i.object_details}}</p></td>
+                    <td>
+                         {{i.phone_number}}
+                        <a href="tel:{{i.phone_number}}" class="btn-primary">Call</a>
+                    </td>
+                    <td> <p>{{i.created_date}}</p></td>
+                </tr>
+                <!-- Add more rows with dynamic data here -->
+            </tbody>
+        </table>
     </div>
     {% endfor %}
 </div>
